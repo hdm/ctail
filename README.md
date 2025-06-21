@@ -4,6 +4,15 @@ Tail [Certificate Transparency](https://certificate.transparency.dev/) logs and 
 
 This utility is an alternative to using hosted services like [crt.sh](https://crt.sh) or CertStream.
 
+*ctail* is designed for quickly tailing the head of the logs and may not be the best choice for building comprehensive databases.
+
+If you need something more comprehensive, consider the following open source alternatives:
+* [certspotter](https://github.com/SSLMate/certspotter)
+* [rxtls](https://github.com/x-stp/rxtls)
+
+
+*Warning*: ctail can use a large amount of bandwidth (download) due to the rate of change in modern CT logs. If you are running this on a bandwidth-limited virtual machine, you may blow through your quota and rack up additional fees.
+
 Usage:
 
 ```sh
