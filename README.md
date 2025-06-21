@@ -15,3 +15,5 @@ Logs are written to standard error and results are formatted as NDJSON/JSONL and
 The output can be filtered using using tools like [jq](https://jqlang.org/).
 
 Duplicate records are common and you might consider using a bloom filter in the pipeline.
+
+![ctail feeding into jq](https://github.com/hdm/ctail/blob/main/docs/demo.gif?raw=true)
