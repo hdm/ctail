@@ -118,19 +118,18 @@ func scrubX509Value(s string) string {
 	return strings.ReplaceAll(s, "\x00", "")
 }
 
+var client = &http.Client{Transport: &http.Transport{
+	TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+}}
+
 func downloadJSON(url string) ([]byte, *http.Response, error) {
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return []byte{}, nil, err
 	}
 
+	req.Header.Set("User-Agent", "ctail (+https://github.com/hdm/ctail)")
 	req.Header.Set("Accept", "application/json")
-
-	tr := &http.Transport{
-		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-	}
-
-	client := &http.Client{Transport: tr}
 
 	resp, err := client.Do(req)
 	if err != nil {
