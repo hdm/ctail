@@ -64,6 +64,7 @@ type CTResult struct {
 	Name   string   `json:"name"`
 	TS     uint64   `json:"ts"`
 	CN     string   `json:"cn"`
+	Issuer string   `json:"issuer"`
 	SHA1   string   `json:"sha1"`
 	Emails []string `json:"email,omitempty"`
 	IPs    []string `json:"ip,omitempty"`
@@ -377,6 +378,7 @@ func logReader(c <-chan *CTEntry, o chan<- *CTResult) {
 				Name: n,
 				TS:   leaf.TimestampedEntry.Timestamp,
 				CN:   strings.ToLower(scrubX509Value(cert.Subject.CommonName)),
+				Issuer: cert.Issuer.String(),
 				SHA1: sha1hash,
 			}
 
